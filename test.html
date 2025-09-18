@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Viewer lớn + Thumbnails ngang</title>
+    <style>
+.gallery {
+  display: flex;
+  max-width: 900px;
+  margin: 20px auto;
+  gap: 20px;
+}
+
+.main-image {
+  flex: 2;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.thumb-nav {
+  background: #333;
+  color: #fff;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.thumb-wrap {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* ẩn thanh cuộn */
+  -ms-overflow-style: none;
+}
+
+.thumb-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.thumb.active {
+  border-color: #007bff;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="gallery">
+        <div class="main-image">
+          <img id="mainImg" src="./images/img1.jpg" alt="Main Image">
+        </div>
+      
+        <div class="thumb-section">
+          <button class="thumb-nav left" onclick="scrollThumbs(-1)">&#10094;</button>
+          <div class="thumb-wrap" id="thumbWrap">
+            <img class="thumb active" src="./images/img1.jpg" onclick="changeImage(this)">
+            <img class="thumb" src="./images/img2.jpg" onclick="changeImage(this)">
+            <img class="thumb" src="./images/img3.jpg" onclick="changeImage(this)">
+            <img class="thumb" src="./images/img4.jpg" onclick="changeImage(this)">
+            <img class="thumb" src="./images/img5.jpg" onclick="changeImage(this)">
+            <img class="thumb" src="./images/img6.jpg" onclick="changeImage(this)">
+          </div>
+          <button class="thumb-nav right" onclick="scrollThumbs(1)">&#10095;</button>
+        </div>
+      </div>
+      
+<script>
+    function changeImage(el) {
+  document.getElementById('mainImg').src = el.src;
+
+  document.querySelectorAll('.thumb').forEach(img => img.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function scrollThumbs(direction) {
+  const wrap = document.getElementById('thumbWrap');
+  const scrollAmount = 100; // px
+  wrap.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+}
+
+</script>
+</body>
+
+</html>
