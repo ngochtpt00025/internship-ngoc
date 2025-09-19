@@ -154,7 +154,6 @@ body {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Mobile Navigation Overlay */
 .mobile-nav-overlay {
     position: fixed;
     top: 0;
@@ -173,7 +172,6 @@ body {
     visibility: visible;
 }
 
-/* Mobile Navigation */
 .mobile-nav {
     position: fixed;
     top: 0;
@@ -373,6 +371,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .section-header h3 {
@@ -428,7 +427,7 @@ body {
 }
 
 /* products */
-.prosucts {
+.products {
     width: 100%;
     padding-top: 56px;
     padding-bottom: 56px;
@@ -1293,6 +1292,11 @@ del {
 
     .range-item span {
         font-size: 18px;
+    }
+
+    .products {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     .list-products {

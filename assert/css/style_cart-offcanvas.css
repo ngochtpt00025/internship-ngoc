@@ -1,4 +1,4 @@
-.offcanvas {
+    .offcanvas {
     background-color: #ffffff;
     padding: 28px;
 }
@@ -112,6 +112,9 @@
     text-decoration: none;
     color: #000000;
     font-weight: 500;   
+}
+.btn-cart:hover a{
+    color: #ffffff;
 }
 .btn-cart:hover {
     background-color: #B88E2F;

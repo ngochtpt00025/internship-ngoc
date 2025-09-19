@@ -531,6 +531,8 @@ tbody tr:first-child td {
     .service-highlights {
         padding: 40px 15px;
         gap: 25px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .service {
@@ -539,17 +541,17 @@ tbody tr:first-child td {
     }
     
     .service-icon svg {
-        width: 45px;
-        height: 45px;
+        width: 30px;
+        height: 30px;
     }
     
     .service-content h3 {
-        font-size: 18px;
+        font-size: 12px;
         white-space: nowrap;
     }
     
     .service-content p {
-        font-size: 14px;
+        font-size: 10px;
         white-space: nowrap;
     }
 }

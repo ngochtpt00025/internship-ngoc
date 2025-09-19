@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileCloseBtn
     });
 
-    // Open mobile menu
     function openMobileMenu() {
         console.log('Opening mobile menu');
         if (mobileMenuToggle) mobileMenuToggle.classList.add('active');
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = 'hidden';
     }
 
-    // Close mobile menu
     function closeMobileMenu() {
         console.log('Closing mobile menu');
         if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
@@ -32,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = 'auto';
     }
 
-    // Toggle mobile menu
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', function (e) {
             e.preventDefault();
@@ -47,32 +44,67 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Mobile menu toggle not found');
     }
 
-    // Close mobile menu when clicking close button
     if (mobileCloseBtn) {
         mobileCloseBtn.addEventListener('click', closeMobileMenu);
     }
 
-    // Close mobile menu when clicking overlay
     if (mobileNavOverlay) {
         mobileNavOverlay.addEventListener('click', closeMobileMenu);
     }
 
-    // Close mobile menu when clicking nav links
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', closeMobileMenu);
     });
 
-    // Close mobile menu when window is resized to desktop
     window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             closeMobileMenu();
         }
     });
-
-    // Handle escape key
+    
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
             closeMobileMenu();
         }
     });
+
+    const mobileFilterToggle = document.getElementById('mobileFilterToggle');
+    const filterContent = document.getElementById('filterContent');
+    
+    console.log('Mobile Filter Toggle:', mobileFilterToggle);
+    console.log('Filter Content:', filterContent);
+    
+    if (mobileFilterToggle && filterContent) {
+        console.log('Both elements found, adding event listener');
+        
+        mobileFilterToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Filter button clicked!');
+            
+            filterContent.classList.toggle('show');
+            console.log('Filter content classes:', filterContent.classList);
+            
+            mobileFilterToggle.classList.toggle('active');
+            
+            if (filterContent.classList.contains('show')) {
+                console.log('Showing filter content');
+                filterContent.style.display = 'flex';
+                setTimeout(() => {
+                    filterContent.style.opacity = '1';
+                    filterContent.style.transform = 'translateY(0)';
+                }, 10);
+            } else {
+                console.log('Hiding filter content');
+                filterContent.style.opacity = '0';
+                filterContent.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    if (!filterContent.classList.contains('show')) {
+                        filterContent.style.display = 'none';
+                    }
+                }, 300);
+            }
+        });
+    } else {
+        console.log('Elements not found - Toggle:', !!mobileFilterToggle, 'Content:', !!filterContent);
+    }   
 });
