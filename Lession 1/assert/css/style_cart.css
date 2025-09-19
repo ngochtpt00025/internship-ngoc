@@ -9,6 +9,9 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+:root {
+    --bs-breadcrumb-divider: url('../images/icons/Vector.svg');
+}
 
 .banner-cart {
     width: 100%;
@@ -35,6 +38,20 @@ input[type=number] {
 .banner-cart .breadcrumb {
     display: flex;
     align-items: center;
+    list-style: none;
+}
+.breadcrumb li:not(:last-child)::after {
+    display: inline-block;
+    content: "";
+    background-image: var(--bs-breadcrumb-divider);
+    color: #000000;
+    margin-left: 10px;
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    vertical-align: middle; 
 }
 
 .breadcrumb-item a {
@@ -298,12 +315,12 @@ tbody tr:first-child td {
     }
     
     .service-content h3 {
-        font-size: 22px;
+        font-size: 18px;
         white-space: nowrap;
     }
     
     .service-content p {
-        font-size: 18px;
+        font-size: 14px;
         white-space: nowrap;
     }
 }
