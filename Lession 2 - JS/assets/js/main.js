@@ -10,32 +10,45 @@ var currentIndex = 0;
 
 function next() {
   console.log("current index: ", currentIndex);
-
+  const sliderContainer = document.querySelector(".slider-container");
   if (currentIndex < imageUrl.length - 1) {
     currentIndex++;
   } else {
     currentIndex = 0;
   }
-  renderlide(currentIndex);
+  setCurrentIndexColor(currentIndex);
+  
+  sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`
 }
 function prev() {
   console.log("current index: ", currentIndex);
+  const sliderContainer = document.querySelector(".slider-container");
   if (currentIndex >= 0 && currentIndex !== -1) {
     currentIndex--;
   } else {
     currentIndex = imageUrl.length - 1;
   }
-  renderlide(currentIndex);
+  //renderlide(currentIndex);
+  sliderContainer.style.transform = `translateX(${currentIndex * 100}%)`
+  setCurrentIndexColor(currentIndex);
 }
 
-function renderlide(index) {
+function renderSlide() {
   const sliderContainer = document.querySelector(".slider-container");
-  const imgIdx = imageUrl.findIndex((img) => img === imageUrl[index]);
-  if (imgIdx !== -1) {
-    sliderContainer.innerHTML = `
-            <img class="slider-item" src="${imageUrl[imgIdx]}" alt="">
-        `;
-  }
+
+  imageUrl.forEach((url, indx) =>  {
+    sliderContainer.innerHTML += 
+    `
+      <img class="slider-item"   src="${url}" alt="">
+    `
+  })
+
+  // const imgIdx = imageUrl.findIndex((img) => img === imageUrl[index]);
+  // if (imgIdx !== -1) {
+  //   sliderContainer.innerHTML = `
+  //           <img class="slider-item" src="${imageUrl[imgIdx]}" alt="">
+  //       `;
+  // }
 }
 const renderSliderPagination = () => {
   const sliderPagination = document.querySelector(".slider-pagination");
@@ -48,13 +61,16 @@ const renderSliderPagination = () => {
 };
 
 function setCurrentIndexColor(index) {
-  document.getElementById('').classList.add("active");
+  document.querySelectorAll('.page-item').forEach(page => {
+    page.classList.remove('active');
+  })
+  document.getElementById(`${index}`).classList.add("active");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderlide(currentIndex);
+  renderSlide();
   renderSliderPagination();
-  setCurrentIndexColor(0);
+  setCurrentIndexColor(currentIndex);
 
   document
     .getElementById("slider-control-prev")
