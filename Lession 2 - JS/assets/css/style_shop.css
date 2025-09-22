@@ -3,6 +3,7 @@
     height: 100px;
     background-color: #F9F1E7;
 }
+
 .filter-section-mobile {
     display: none;
     align-items: center;
@@ -38,6 +39,7 @@
 .filter-section-mobile.active svg {
     transform: rotate(180deg);
 }
+
 .filter-section {
     max-width: 1590px;
     margin: 0 auto;
@@ -68,30 +70,35 @@
     .filter-section-mobile {
         display: none !important;
     }
+
     .filter-section-content {
         opacity: 1 !important;
         transform: translateY(0) !important;
         display: flex !important;
     }
 }
+
 .filter-section-desktop-left {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 23px;
 }
+
 .filter-section-desktop-left {
     font-size: 20px;
     font-weight: 550;
     line-height: 24px;
     color: #1C1C1C;
 }
+
 .filter-section-desktop-left-item {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
+
 .showing-result {
     font-size: 16px;
     font-weight: 500;
@@ -101,24 +108,28 @@
     margin-left: 10px;
     border-left: 1px solid #1C1C1C;
 }
+
 .filter-section-desktop-right {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
 }
+
 .filter-section-desktop-right-item {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 17px;
 }
+
 .filter-section-desktop-right-item span {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
     color: #1C1C1C;
 }
+
 .show-number {
     padding: 12px 18px;
     text-align: center;
@@ -131,6 +142,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
 }
+
 .short-by {
     padding-top: 12px;
     padding-left: 30px;
@@ -145,11 +157,66 @@
     -webkit-appearance: none;
     -moz-appearance: none;
 }
+
 .product-name {
     color: #1C1C1C;
 }
+
 .product-price {
     color: #1C1C1C;
+}
+
+.pagination {
+    gap: 38px;
+}
+
+.pagination button {
+    border: none;
+    outline: none;
+    padding: 15px 26px;
+    border-radius: 10px;
+    background-color: #F9F1E7;
+    font-size: 20px;
+    color: #1C1C1C;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagination button:hover {
+    transform: scale(1.04);
+}
+
+.pagination .list-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 38px;
+}
+
+.pagination .list-page .page-item {
+    border: none;
+    outline: none;
+    text-decoration: none;
+    max-width: 60px;
+    max-height: 60px;
+    padding: 15px 26px;
+    border-radius: 10px;
+    background-color: #F9F1E7;
+    font-size: 20px;
+    color: #1C1C1C;
+    transition: all 0.3s;
+}
+.page-item.active {
+    background-color: #B88E2F !important;
+    color: #FFFFFF !important;
+}
+
+.pagination .list-page .page-item {
+    transition: all 0.3s;
+}
+
+.pagination .list-page .page-item:hover {
+    transform: scale(1.04);
 }
 
 
@@ -161,9 +228,11 @@
         padding-left: 50px;
         padding-right: 50px;
     }
+
     .filter-section-desktop-left {
         gap: 18px;
     }
+
     .filter-section-desktop-right {
         gap: 25px;
     }
@@ -175,19 +244,24 @@
         min-height: 100px;
         padding: 20px 30px;
     }
+
     .filter-section-content {
         gap: 15px;
     }
+
     .filter-section-desktop-left {
         gap: 15px;
     }
+
     .filter-section-desktop-right {
         gap: 20px;
     }
+
     .showing-result {
         padding-left: 20px;
         margin-left: 8px;
     }
+
 }
 
 /* Tablet portrait */
@@ -196,20 +270,24 @@
         height: auto;
         padding: 15px 20px;
     }
+
     .filter-section-content {
         flex-direction: column;
         justify-content: center;
         align-items: stretch;
         gap: 15px;
     }
+
     .filter-section-desktop-left {
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 12px;
     }
+
     .filter-section-desktop-left-item {
         gap: 8px;
     }
+
     .showing-result {
         border-left: none;
         border-top: 1px solid #1C1C1C;
@@ -220,18 +298,46 @@
         text-align: center;
         width: 100%;
     }
+
     .filter-section-desktop-right {
         justify-content: space-between;
         gap: 15px;
     }
+
     .filter-section-desktop-right-item {
         flex: 1;
         justify-content: space-between;
         gap: 10px;
     }
+
     .short-by {
         padding-right: 40px;
         min-width: 140px;
+    }
+        .pagination button {
+        border: none;
+        outline: none;
+        padding: 10px 15px;
+        border-radius: 10px;
+        background-color: #F9F1E7;
+        font-size: 14px;
+        color: #1C1C1C;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .pagination .list-page a {
+        border: none;
+        outline: none;
+        text-decoration: none;
+        max-width: 30px;
+        max-height: 30px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        background-color: #F9F1E7;
+        font-size: 14px;
+        color: #1C1C1C;
+        transition: all 0.3s;
     }
 }
 
@@ -240,15 +346,18 @@
     .filter-section {
         padding: 15px;
     }
+
     .filter-section-mobile {
         display: flex;
         margin-bottom: 15px;
     }
+
     .filter-section-content {
         display: none;
         opacity: 0;
         transform: translateY(-10px);
     }
+
     .filter-section-content.show {
         display: flex;
         flex-direction: column;
@@ -258,18 +367,22 @@
         opacity: 1;
         transform: translateY(0);
     }
+
     .filter-section-desktop-left {
         flex-direction: column;
         align-items: stretch;
         gap: 10px;
     }
+
     .filter-section-desktop-left-item {
         justify-content: flex-start;
     }
+
     .filter-section-desktop-right {
         flex-direction: column;
         gap: 12px;
     }
+
     .filter-section-desktop-right-item {
         justify-content: flex-start;
     }
@@ -280,6 +393,7 @@
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -292,42 +406,76 @@
         height: auto;
         padding: 12px 15px;
     }
+
     .filter-section-content {
         gap: 12px;
     }
+
     .filter-section-desktop-left {
         font-size: 14px;
         gap: 8px;
     }
+
     .filter-section-desktop-left-item {
         font-size: 14px;
         gap: 6px;
     }
+
     .filter-section-desktop-left-item svg {
         width: 20px;
         height: 20px;
     }
+
     .showing-result {
         font-size: 12px;
         padding-top: 12px;
         margin-top: 8px;
     }
+
     .filter-section-desktop-right-item {
         gap: 8px;
     }
+
     .filter-section-desktop-right-item span {
         font-size: 14px;
     }
+
     .show-number {
         padding: 8px 12px;
         max-width: 45px;
         font-size: 14px;
     }
+
     .short-by {
         padding: 8px 12px 8px 20px;
         padding-right: 30px;
         min-width: 120px;
         font-size: 14px;
+    }
+        .pagination button {
+        border: none;
+        outline: none;
+        padding: 8px 12px;
+        border-radius: 10px;
+        background-color: #F9F1E7;
+        font-size: 12px;
+        color: #1C1C1C;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .pagination .list-page a {
+        border: none;
+        outline: none;
+        text-decoration: none;
+        max-width: 60px;
+        max-height: 60px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        background-color: #F9F1E7;
+        font-size: 12px;
+        color: #1C1C1C;
+        transition: all 0.3s;
     }
 }
 
@@ -337,27 +485,34 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+
     .filter-section-desktop-left {
         font-size: 12px;
     }
+
     .filter-section-desktop-left-item {
         font-size: 12px;
     }
+
     .filter-section-desktop-left-item svg {
         width: 18px;
         height: 18px;
     }
+
     .showing-result {
         font-size: 11px;
     }
+
     .filter-section-desktop-right-item span {
         font-size: 12px;
     }
+
     .show-number {
         padding: 6px 10px;
         max-width: 40px;
         font-size: 12px;
     }
+
     .short-by {
         padding: 6px 10px 6px 15px;
         padding-right: 25px;

@@ -1,10 +1,10 @@
 const slides = [
-    { src: './assert/images/products/Syltherine.png', title: 'Inner Peace', sub: '01 — Bed Room' },
-    { src: './assert/images/products/Leviosa.png', title: 'Scandinavian Joy', sub: '02 — Dining Room' },
-    { src: './assert/images/products/Lolito.png', title: 'Sunlight Corner', sub: '03 — Living Room' },
-    { src: './assert/images/products/Repira.png', title: 'Cozy Minimal', sub: '04 — Studio' },
-    { src: './assert/images/products/Grifo.png', title: 'Modern Calm', sub: '05 — Bedroom' },
-    { src: './assert/images/products/Muggo.png', title: 'Woodland Vibe', sub: '06 — Office' }
+    { src: './assets/images/products/Syltherine.png', title: 'Inner Peace', sub: '01 — Bed Room' },
+    { src: './assets/images/products/Leviosa.png', title: 'Scandinavian Joy', sub: '02 — Dining Room' },
+    { src: './assets/images/products/Lolito.png', title: 'Sunlight Corner', sub: '03 — Living Room' },
+    { src: './assets/images/products/Repira.png', title: 'Cozy Minimal', sub: '04 — Studio' },
+    { src: './assets/images/products/Grifo.png', title: 'Modern Calm', sub: '05 — Bedroom' },
+    { src: './assets/images/products/Muggo.png', title: 'Woodland Vibe', sub: '06 — Office' }
 ];
 /* ========================= */
 

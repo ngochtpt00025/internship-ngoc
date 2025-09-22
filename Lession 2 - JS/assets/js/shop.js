@@ -1,5 +1,6 @@
 const listProducts = [
   {
+    id: 0,
     name: "Syltherine",
     subDescription: "Stylish caf chair",
     currentPrice: "Rp 2.500.000",
@@ -8,6 +9,7 @@ const listProducts = [
     badge: "-30%",
   },
   {
+    id: 1,
     name: "Leviosa",
     subDescription: "Stylish caf chair",
     currentPrice: "Rp 2.500.000",
@@ -16,6 +18,7 @@ const listProducts = [
     badge: null,
   },
   {
+    id: 2,
     name: "Lolito",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 7.000.000",
@@ -24,6 +27,7 @@ const listProducts = [
     badge: "-50%",
   },
   {
+    id: 3,
     name: "Repira",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 500.000",
@@ -32,6 +36,7 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 4,
     name: "Grifo",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 500.000",
@@ -40,6 +45,7 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 5,
     name: "Muggo",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 150.000",
@@ -48,6 +54,7 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 6,
     name: "Pingky",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 7.000.000",
@@ -56,6 +63,7 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 7,
     name: "Potty",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 500.000",
@@ -64,6 +72,7 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 8,
     name: "Syltherine",
     subDescription: "Stylish caf chair",
     currentPrice: "Rp 2.500.000",
@@ -72,6 +81,7 @@ const listProducts = [
     badge: "-30%",
   },
   {
+    id: 9,
     name: "Leviosa",
     subDescription: "Stylish caf chair",
     currentPrice: "Rp 2.500.000",
@@ -80,6 +90,7 @@ const listProducts = [
     badge: null,
   },
   {
+    id: 10,
     name: "Lolito",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 7.000.000",
@@ -88,6 +99,7 @@ const listProducts = [
     badge: "-50%",
   },
   {
+    id: 11,
     name: "Repira",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 500.000",
@@ -96,6 +108,7 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 12,
     name: "Grifo",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 500.000",
@@ -104,6 +117,7 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 13,
     name: "Muggo",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 150.000",
@@ -112,6 +126,7 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 14,
     name: "Pingky",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 7.000.000",
@@ -120,6 +135,16 @@ const listProducts = [
     badge: "New",
   },
   {
+    id: 15,
+    name: "Potty",
+    subDescription: "Luxury big sofa",
+    currentPrice: "Rp 500.000",
+    originalPrice: "Rp 1.000.000",
+    image: "./assets/images/products/Potty.png",
+    badge: "New",
+  },
+  {
+    id: 16,
     name: "Potty",
     subDescription: "Luxury big sofa",
     currentPrice: "Rp 500.000",
@@ -131,33 +156,45 @@ const listProducts = [
 
 const listProductsUI = document.querySelector(".list-products");
 
-let productCount = 0;
+let pageSize = 0;
+let currentPage = 0;
 let sortBy = "";
+let totalPage;
 
-function loadProducts(productCount, sortBy) {
-  let listProductsTerm = listProducts.slice(0, productCount);
+function loadProducts(size, sortBy, number) {
+  pageSize = Number(size);
+  currentPage = Number(number);
+  console.log("curent page: ", currentPage);
+  totalPage = Math.ceil(listProducts.length / size);
 
+  const start = currentPage * pageSize;
+  const end = start + pageSize;
+
+  let sortedList = [...listProducts];
   if (sortBy === "price-asc") {
-    listProductsTerm.sort(
+    sortedList.sort(
       (a, b) =>
         parseFloat(a.currentPrice.replace(/[^\d]/g, "")) -
         parseFloat(b.currentPrice.replace(/[^\d]/g, ""))
     );
   } else if (sortBy === "price-desc") {
-    listProductsTerm.sort(
+    sortedList.sort(
       (a, b) =>
         parseFloat(b.currentPrice.replace(/[^\d]/g, "")) -
         parseFloat(a.currentPrice.replace(/[^\d]/g, ""))
     );
   } else if (sortBy === "name-asc") {
-    listProductsTerm.sort((a, b) =>
+    sortedList.sort((a, b) =>
       a.name.toLowerCase().localeCompare(b.name.toLowerCase())
     );
   } else if (sortBy === "name-desc") {
-    listProductsTerm.sort((a, b) =>
+    sortedList.sort((a, b) =>
       b.name.toLowerCase().localeCompare(a.name.toLowerCase())
     );
   }
+
+  let listProductsTerm = sortedList.slice(start, end);
+
   listProductsUI.innerHTML = "";
   listProductsTerm.forEach((product, index) => {
     listProductsUI.innerHTML += `
@@ -180,7 +217,7 @@ function loadProducts(productCount, sortBy) {
                     </div>
                 </div>
                 <div class="product-hover">
-                    <button class="add-to-cart" onclick="addToCart(${index})">Add to Cart</button>
+                    <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
                     <div class="product-hover-action">
                         <button>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -223,19 +260,89 @@ function loadProducts(productCount, sortBy) {
   document.querySelector(
     ".shrus"
   ).textContent = `Showing 1 - ${listProductsTerm.length} of ${listProducts.length} results`;
+
+  renderPagination(totalPage, size);
+}
+function next() {
+  if (currentPage < totalPage - 1) {
+    currentPage++;
+  } else {
+    currentPage = 0;
+  }
+  switchPage(currentPage);
+  console.log('cun: ', currentPage);
+}
+function prev() {
+  if (currentPage > 0) {
+    currentPage--;
+  } else {
+    currentPage = totalPage;
+  }
+  switchPage(currentPage);
+}
+function switchPage(number) {
+  filterProducts(number);
+}
+document.querySelector(".pg-previous").addEventListener('click', () => prev());
+document.querySelector(".pg-next").addEventListener('click', () => next());
+function renderPagination(totalPage, size) {
+  let pg_prev = document.querySelector(".pg-previous");
+  let pg_next = document.querySelector(".pg-next");
+
+  if (currentPage === 0) {
+    //pg_prev.style.visibility = "hidden";
+    pg_prev.style.display = "none";
+  } else {
+    //pg_prev.style.visibility = "visible";
+    pg_prev.style.display = "block";
+  }
+
+  if (currentPage === totalPage - 1) {
+    //pg_next.style.visibility = "hidden";
+    pg_next.style.display = "none";
+  } else {
+    //pg_next.style.visibility = "visible";
+    pg_next.style.display = "block";
+  }
+  const listPage = document.querySelector(".list-page");
+  console.log("total-page: ", totalPage);
+
+  listPage.innerHTML = "";
+  for (let index = 0; index < totalPage; index++) {
+    listPage.innerHTML += `
+    <button type="button" class="page-item ${
+      index === currentPage ? "active" : ""
+    }" onclick="switchPage(${index})">
+      ${index + 1}
+    </button>
+    `;
+  }
+
+
+}
+
+const pageItems = document.querySelectorAll(".page-item");
+if (pageItems) {
+  for (let i = 0; i < pageItems.length; i++) {
+    pageItems[i].addEventListener("click", () => switchPage(i));
+  }
 }
 
 let show_number = document.querySelector(".show-number");
 let short_by = document.querySelector(".short-by");
+function filterProducts(number) {
+  if (typeof number === "number") {
+    currentPage = number;
+  } else {
+    currentPage = 0;
+  }
+  loadProducts(show_number.value, short_by.value, currentPage);
+}
 
-show_number.addEventListener("change", () => {
-  loadProducts(show_number.value, short_by.value);
-});
-short_by.addEventListener("change", () => {
-  loadProducts(show_number.value, short_by.value);
-});
+show_number.addEventListener("change", () => filterProducts());
+short_by.addEventListener("change", () => filterProducts());
 
-loadProducts(16, "");
+loadProducts(16, "", 0);
 
 export const getCart = () => {
   const cart = localStorage.getItem("cart")
@@ -244,13 +351,13 @@ export const getCart = () => {
   return cart;
 };
 import { loadCart } from "./off-canvas.js";
-function addToCart(index) {
+function addToCart(id) {
   const cart = getCart();
-  const item = listProducts.find((p, i) => index === i);
+  const item = listProducts.find((p, i) => id === p.id);
 
   console.log(cart);
 
-  let findItem = cart.find((c) => c.id === index);
+  let findItem = cart.find((c) => c.id === id);
 
   if (findItem) {
     console.log(findItem);
@@ -258,7 +365,7 @@ function addToCart(index) {
     cart[findItem] = findItem;
   } else {
     cart.push({
-      id: index,
+      id: id,
       name: item.name,
       image: item.image,
       quantity: 1,
@@ -286,3 +393,4 @@ export function removeFromCart(id) {
 }
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
+window.switchPage = switchPage;
