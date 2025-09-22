@@ -317,8 +317,16 @@ function renderPagination(totalPage, size) {
     </button>
     `;
   }
+}
+const search = document.querySelector('.search-icon')
+console.log('ngoc');
 
 
+search.addEventListener('click'), () => {  
+    const modal_container = document.querySelector('.modal-container');
+    const modal = document.querySelector('.modal');
+    modal.classList.add('show')
+    modal.classList.remove('hidden')
 }
 
 const pageItems = document.querySelectorAll(".page-item");
@@ -394,60 +402,3 @@ export function removeFromCart(id) {
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.switchPage = switchPage;
-
-const searchBox = document.querySelector('.search-box');
-const searchBtn = document.querySelector('.search-icon');
-const closeSearchBox = document.querySelector('.closeSearchBox');
-
-searchBtn.addEventListener('click', () => {
-  searchBox.classList.remove('hidden');
-  searchBox.classList.add('show');
-})
-closeSearchBox.addEventListener('click', () => {
-  searchBox.classList.remove('show')
-  searchBox.classList.add('hidden')
-})
-
-function searchProducts(keyword) {
-  const results = listProducts.filter(p => p.name.toLowerCase().includes(keyword));
-  console.log(results);
-  const listResult = document.querySelector('.list-result');
-  listResult.innerHTML = '';
-  if (results.length >= 1) {
-    results.forEach(r => {
-      listResult.innerHTML += 
-      `
-      <div class="result">
-          <a href="" class="prod-img">
-              <img src="${r.image}" alt="">
-          </a>
-          <div class="prod-info">
-              <a href="">${r.name}</a>
-              <small>
-              ${r.subDescription}
-              </small>
-              <ins>${r.currentPrice}</ins>
-          </div>
-      </div>
-      `
-    })
-  } else {
-    listResult.innerHTML = '<p>nothing found</p>'
-  }
-}
-  const keyword = document.querySelector('.search-input');
-document.getElementById('btn-seach-box').addEventListener('click', () => {
-
-  debounce(searchProducts(keyword.value), 2);
-})
-keyword.addEventListener('change', () => debounce(searchProducts(keyword.value), 2000))
-
-function debounce(func, delay) {
-  let time;
-  return function() {
-    clearTimeout(time)
-    time = setTimeout(() => {
-      func
-    }, delay);
-  }
-}

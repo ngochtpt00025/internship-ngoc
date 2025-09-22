@@ -826,7 +826,7 @@ del {
     border-radius: 50%;
     cursor: pointer;
 }   
-.active {
+.page-dot.active {
     background-color: #B88E2F;
 }
 .active::after {
