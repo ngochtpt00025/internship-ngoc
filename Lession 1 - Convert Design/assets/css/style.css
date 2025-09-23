@@ -829,7 +829,7 @@ del {
 .page-dot.active {
     background-color: #B88E2F;
 }
-.active::after {
+.page-dot.active::after {
     content: "";
     position: absolute;
     top: 50%;

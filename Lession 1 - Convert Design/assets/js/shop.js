@@ -322,12 +322,12 @@ const search = document.querySelector('.search-icon')
 console.log('ngoc');
 
 
-search.addEventListener('click'), () => {  
-    const modal_container = document.querySelector('.modal-container');
-    const modal = document.querySelector('.modal');
-    modal.classList.add('show')
-    modal.classList.remove('hidden')
-}
+// search.addEventListener('click'), () => {  
+//     const modal_container = document.querySelector('.modal-container');
+//     const modal = document.querySelector('.modal');
+//     modal.classList.add('show')
+//     modal.classList.remove('hidden')
+// }
 
 const pageItems = document.querySelectorAll(".page-item");
 if (pageItems) {
